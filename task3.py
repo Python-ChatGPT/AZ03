@@ -44,20 +44,21 @@ file_path = 'prices.csv'
 data = pd.read_csv(file_path)
 prices = data['Price']
 
-average_price = prices.mean()
-print(f'Average price: {average_price:.2f}')
+mean_price = prices.mean()
+print(f'Average price: {mean_price:.2f}')
 
 print("Building histogram...")
 plt.hist(prices, bins=10, edgecolor='black')
 
 # Adding average price to the plot
-plt.axvline(average_price, color='#800000', linestyle='dotted', linewidth=1)
-plt.text(average_price, plt.ylim()[1] * 0.9, f'   Avg. price: {average_price:.2f}', color='red')
+plt.axvline(mean_price, color='r', linestyle='dashed', linewidth=2, label=f'Avg. price: {mean_price:.2f}')
 
 # Adding histogram title and captions for the axes
 plt.title('Price histogram')
 plt.xlabel('Price')
 plt.ylabel('Frequency')
+plt.grid(True)
+plt.legend()
 
 print("Showing histogram")
 plt.show()
